@@ -1,28 +1,95 @@
 package entity;
 
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 
-@Entity
-@Table(name = "schedules")
 public class Schedule {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // 일정 ID
+    private Long userId; // 사용자 ID
+    private Long eventId; // 이벤트 ID
+    private String activity; // 활동
+    private Date scheduledTime; // 예약 시간
+    private String password; // 일정 비밀번호
+    private Date createdAt; // 등록 시간
+    private Date updatedAt; // 수정 시간
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    // 기본 생성자
+    public Schedule() {
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "event_id", nullable = false)
-    private Event event;
-
-    @Column(nullable = false)
-    private String activity;
-
-    @Column(nullable = false)
-    private LocalDateTime scheduledTime;
+    // 모든 필드를 초기화하는 생성자
+    public Schedule(Long id, Long userId, Long eventId, String activity, Date scheduledTime, String password, Date createdAt, Date updatedAt) {
+        this.id = id;
+        this.userId = userId;
+        this.eventId = eventId;
+        this.activity = activity;
+        this.scheduledTime = scheduledTime;
+        this.password = password;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Long eventId) {
+        this.eventId = eventId;
+    }
+
+    public String getActivity() {
+        return activity;
+    }
+
+    public void setActivity(String activity) {
+        this.activity = activity;
+    }
+
+    public Date getScheduledTime() {
+        return scheduledTime;
+    }
+
+    public void setScheduledTime(Date scheduledTime) {
+        this.scheduledTime = scheduledTime;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }
